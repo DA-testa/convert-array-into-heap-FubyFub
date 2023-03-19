@@ -44,15 +44,14 @@ def main():
     
     if "I" in check:
         
-            length = int( check() )
-            data = list( map( int, check().split() ))
-            assert len(data) == length
+        length = int( input() )
+        data = list( map( int, input().split() ))
             
     if "F" in check:
        
        path =  './tests/'
        file = input()
-       filepath = file + path
+       filepath = path + file
        
        if "a" not in file:
            
