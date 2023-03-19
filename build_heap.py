@@ -25,7 +25,7 @@ def build_heap(data):
                 
             if cnt != maxI:
                 
-                swaps.append( cnt, maxI )
+                swaps.append(( cnt, maxI ))
                 data[ cnt ], data[ maxI ] = data[ maxI ], data[ cnt ]
                 
                 cnt = maxI
