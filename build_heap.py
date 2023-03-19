@@ -8,12 +8,12 @@ def build_heap(data):
     for i in range( length // 2, -1, -1 ):
         
         cnt = i
+        rightC = 2 * cnt + 2    
+        leftC = 2 * cnt + 1
         
         while True:
             
             maxI = cnt
-            rightC = 2 * cnt + 2    
-            leftC = 2 * cnt + 1
             
             if rightC < length and data[ rightC ] < data[ maxI ]:
                 
@@ -49,28 +49,28 @@ def main():
             
     if "F" in check:
        
-       path =  './tests/'
-       file = input()
-       filepath = path + file
+        path =  './tests/'
+        file = input()
+        filepath = path + file
        
-       if "a" not in file:
+        if "a" not in file:
            
             try:
                 
-               with open( filepath ) as f:
+                with open( filepath ) as f:
                    
-                length = int( f.readline() )
-                data = list( map( int, f.readline().split() ))
+                    length = int( f.readline() )
+                    data = list( map( int, f.readline().split() ))
                    
             except Exception as o:
                
-               print( "File not found") 
+                print( "File not found") 
                
-               return
+                return
            
-       else:
+        else:
            
-        print( "Error" )
+            print( "Error" )
 
 
     assert len(data) == length
