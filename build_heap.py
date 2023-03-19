@@ -59,8 +59,8 @@ def main():
                 
                with open( filepath ) as f:
                    
-                   length = int( f.readline() )
-                   data = list( map( int, f.readline().split() ))
+                length = int( f.readline() )
+                data = list( map( int, f.readline().split() ))
                    
             except Exception as o:
                
@@ -70,7 +70,7 @@ def main():
            
        else:
            
-            print( "Error" )
+        print( "Error" )
 
 
     assert len(data) == length
