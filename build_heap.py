@@ -1,38 +1,83 @@
-# python3
-
+#Andrejs Vasiljevs 12 grupa 221RDB441
 
 def build_heap(data):
     swaps = []
-    # TODO: Creat heap and heap sort
-    # try to achieve  O(n) and not O(n2)
-
-
+    length = len( data )
+    
+    for i in range( length // 2, -1, -1 ):
+        
+        cnt = i
+        
+        while True:
+            
+            maxI = i
+            rightC = 2 * cnt + 2    
+            leftC = 2 * cnt + 1
+            
+            if rightC < length and data[ rightC ] < data[ maxI ]:
+                
+                maxI = rightC
+            
+            if leftC < length and data[ leftC ] < data[ maxI ]:
+                
+                maxI = leftC
+                
+            if i != cnt:
+                
+                data[ cnt ], data[ maxI ] = data[ maxI ], data[ cnt ]
+                swaps.append( i, maxI )
+                
+                i = maxI
+                rightC = 2 * cnt + 2
+                leftC = 2 * cnt + 1
+                
+            else:
+                break
+            
     return swaps
-
 
 def main():
     
-    # TODO : add input and corresponding checks
-    # add another input for I or F 
-    # first two tests are from keyboard, third test is from a file
+    check = input()
+    
+    if "I" in check:
+        
+            length = int( check() )
+            data = list( map( int, check().split() ))
+            assert len(data) == length
+            
+    if "F" in check:
+       
+       path =  './tests/'
+       file = input()
+       filepath = file + path
+       
+       if "a" not in file:
+           
+            try:
+                
+               with open( filepath ) as f:
+                   
+                   length = int( f.readline() )
+                   data = list( map( int, f.readline().split() ))
+                   
+            except Exception as o:
+               
+               print( "File not found") 
+               
+               return
+           
+       else:
+           
+            print( "Error" )
 
 
-    # input from keyboard
-    n = int(input())
-    data = list(map(int, input().split()))
+    assert len(data) == length
 
-    # checks if lenght of data is the same as the said lenght
-    assert len(data) == n
-
-    # calls function to assess the data 
-    # and give back all swaps
     swaps = build_heap(data)
+    
+    assert len(swaps) <= length * 4
 
-    # TODO: output how many swaps were made, 
-    # this number should be less than 4n (less than 4*len(data))
-
-
-    # output all swaps
     print(len(swaps))
     for i, j in swaps:
         print(i, j)
