@@ -1,6 +1,7 @@
 #Andrejs Vasiljevs 12 grupa 221RDB441
 
 def build_heap(data):
+    
     swaps = []
     length = len( data )
     
@@ -10,7 +11,7 @@ def build_heap(data):
         
         while True:
             
-            maxI = i
+            maxI = cnt
             rightC = 2 * cnt + 2    
             leftC = 2 * cnt + 1
             
@@ -22,16 +23,17 @@ def build_heap(data):
                 
                 maxI = leftC
                 
-            if i != cnt:
+            if cnt != maxI:
                 
-                data[ cnt ], data[ maxI ] = data[ maxI ], data[ cnt ]
                 swaps.append( i, maxI )
+                data[ cnt ], data[ maxI ] = data[ maxI ], data[ cnt ]
                 
-                i = maxI
+                cnt = maxI
                 rightC = 2 * cnt + 2
                 leftC = 2 * cnt + 1
                 
             else:
+                
                 break
             
     return swaps
